@@ -26,8 +26,9 @@ export default function OrderContents( {order,dispatch} : OrderContentsProps) {
                             </p>
                             <p className=" font-black"> Cantidad:{item.cantidad} {formatCurrency(item.price * item.cantidad)}</p>
                             </div>
-                            <button className=" bg-red-600 h-8 w-8 rounded-full text-white font-black" onClick={() => {     
-                                return( dispatch({type:'remove-item',payload:{item:item.id}}) )   
+                            <button className=" bg-red-600 h-8 w-8 rounded-full text-white font-black" 
+                            onClick={() => {     
+                                dispatch({type:'remove-item',payload:{item:item.id}}) 
                             }}>
                                 X</button>
                          
