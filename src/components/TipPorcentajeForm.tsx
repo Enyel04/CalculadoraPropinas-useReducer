@@ -1,4 +1,5 @@
-import type { Dispatch, SetStateAction } from "react"
+import { Dispatch } from "react"
+import { OrderAction } from "../reducers/order-reducer"
 
 const tipOptions = [
     {
@@ -20,13 +21,13 @@ const tipOptions = [
 
   type TipPorcentajeFormProps ={
 
-    setTip: Dispatch<SetStateAction<number>>,
+    dispatch: Dispatch<OrderAction>,
     tip:number
   }
 
   //Recorar siempre agregar los elementos dentro de la funcion, es como POO
 
-export default function TipPorcentajeForm({setTip,tip}:TipPorcentajeFormProps) {
+export default function TipPorcentajeForm({dispatch,tip}:TipPorcentajeFormProps) {
   return (
     <div>
       <h3 className=" font-black text-2xl">Propina:</h3>
@@ -40,7 +41,7 @@ export default function TipPorcentajeForm({setTip,tip}:TipPorcentajeFormProps) {
                     name="tip" 
                     value={tipOption.value} 
                     id={tipOption.id}
-                    onChange={e=> setTip(+e.target.value)}
+                    onChange={e=> dispatch({type:'add-tip',payload:{value:+e.target.value}})}
                     checked={tipOption.value===tip}
                     />
             </div>
